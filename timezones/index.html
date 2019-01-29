@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Working Hours - Inskin Media</title>
+    <title>Working Hours | Inskin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -38,9 +37,9 @@
                 <div class="panel-title">Time</div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="timezones time-title">Current Time</div> 
+                        <div class="timezones time-title">Current Time</div>
                         <div class="timezones current-item"></div>
-                        <div class="timezones time-title">Working Times</div> 
+                        <div class="timezones time-title">Working Times (UK Time)</div>
                         <div id="tti" class="timezones territory-item"></div>
                     </div>
                 </div>
@@ -57,49 +56,125 @@
             <div class="timeline-container">
                 <div class="trackline"></div>
                 <div class="curtline"></div>
-                <div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">00</div>
-                <div class="timestamps">00:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">01</div>
-                <div class="timestamps">01:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">02</div>
-                <div class="timestamps">02:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">03</div>
-                <div class="timestamps">03:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">04</div>
-                <div class="timestamps">04:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">05</div>
-                <div class="timestamps">05:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">06</div>
-                <div class="timestamps">06:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">07</div>
-                <div class="timestamps">07:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">08</div>
-                <div class="timestamps">08:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">09</div>
-                <div class="timestamps">09:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">10</div>
-                <div class="timestamps">10:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">11</div>
-                <div class="timestamps">11:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">12</div>
-                <div class="timestamps">12:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">13</div>
-                <div class="timestamps">13:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">14</div>
-                <div class="timestamps">14:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">15</div>
-                <div class="timestamps">15:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">16</div>
-                <div class="timestamps">16:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">17</div>
-                <div class="timestamps">17:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">18</div>
-                <div class="timestamps">18:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">19</div>
-                <div class="timestamps">19:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">20</div>
-                <div class="timestamps">20:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">21</div>
-                <div class="timestamps">21:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">22</div>
-                <div class="timestamps">22:00</div><div class="stamplines" onmousemove="showCoords(event)" onmouseout="clearCoor()">23</div>
-                <div class="timestamps">23:00</div>
-            </div>
-            <div class="working-container">
-                <div class="wHours uk"><div class="cHours"><div class="territory-label">UK</div></div></div>
-                <div class="wHours ukr"><div class="cHours"><div class="territory-label">UKR</div></div></div>
-                <div class="wHours de"><div class="cHours"><div class="territory-label">DE</div></div></div>
-                <div class="wHours au"><div class="cHours"><div class="territory-label">AU</div></div></div>
-                <div class="wHours hksg"><div class="cHours"><div class="territory-label">HK/SG</div></div></div>
-                <div class="wHours uae"><div class="cHours"><div class="territory-label">UAE</div></div></div>
-                <div class="timeline-info">
-                    <div class="time-title">Current Territory Times</div> 
-                    <div class="currentTime uk"></div>
-                    <div class="currentTime ukr"></div>
-                    <div class="currentTime de"></div>
-                    <div class="currentTime au"></div>
-                    <div class="currentTime hksg"></div>
-                    <div class="currentTime uae"></div>
+                <div class="timeStampContainer">
+                    <div class="timestamps">00:00</div>
+                    <div class="timestamps">01:00</div>
+                    <div class="timestamps">02:00</div>
+                    <div class="timestamps">03:00</div>
+                    <div class="timestamps">04:00</div>
+                    <div class="timestamps">05:00</div>
+                    <div class="timestamps">06:00</div>
+                    <div class="timestamps">07:00</div>
+                    <div class="timestamps">08:00</div>
+                    <div class="timestamps">09:00</div>
+                    <div class="timestamps">10:00</div>
+                    <div class="timestamps">11:00</div>
+                    <div class="timestamps">12:00</div>
+                    <div class="timestamps">13:00</div>
+                    <div class="timestamps">14:00</div>
+                    <div class="timestamps">15:00</div>
+                    <div class="timestamps">16:00</div>
+                    <div class="timestamps">17:00</div>
+                    <div class="timestamps">18:00</div>
+                    <div class="timestamps">19:00</div>
+                    <div class="timestamps">20:00</div>
+                    <div class="timestamps">21:00</div>
+                    <div class="timestamps">22:00</div>
+                    <div class="timestamps">23:00</div>
+                </div>
+                <div class="stampContainer">
+                    <div class="stamplines">00</div>
+                    <div class="stamplines">01</div>
+                    <div class="stamplines">02</div>
+                    <div class="stamplines">03</div>
+                    <div class="stamplines">04</div>
+                    <div class="stamplines">05</div>
+                    <div class="stamplines">06</div>
+                    <div class="stamplines">07</div>
+                    <div class="stamplines">08</div>
+                    <div class="stamplines">09</div>
+                    <div class="stamplines">10</div>
+                    <div class="stamplines">11</div>
+                    <div class="stamplines">12</div>
+                    <div class="stamplines">13</div>
+                    <div class="stamplines">14</div>
+                    <div class="stamplines">15</div>
+                    <div class="stamplines">16</div>
+                    <div class="stamplines">17</div>
+                    <div class="stamplines">18</div>
+                    <div class="stamplines">19</div>
+                    <div class="stamplines">20</div>
+                    <div class="stamplines">21</div>
+                    <div class="stamplines">22</div>
+                    <div class="stamplines">23</div>
+                </div>
+                <div class="working-container">
+                    <div class="wHours uk">
+                        <div class="cHours">
+                            <div class="territory-label">UK</div>
+                        </div>
+                    </div>
+                    <div class="wHours ukr">
+                        <div class="cHours">
+                            <div class="territory-label">UKR</div>
+                        </div>
+                    </div>
+                    <div class="wHours de">
+                        <div class="cHours">
+                            <div class="territory-label">DE</div>
+                        </div>
+                    </div>
+                    <div class="wHours uae">
+                        <div class="cHours">
+                            <div class="territory-label">UAE</div>
+                        </div>
+                    </div>
+                    <div class="wHours au">
+                        <div class="cHours">
+                            <div class="territory-label">AU</div>
+                        </div>
+                    </div>
+                    <div class="wHours au2">
+                        <div class="cHours">
+                            <div class="territory-label">AU</div>
+                        </div>
+                    </div>
+                    <div class="wHours hksg">
+                        <div class="cHours">
+                            <div class="territory-label">
+                                <div class="label-fix">HK/SG</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wHours hksg2">
+                        <div class="cHours">
+                            <div class="territory-label"></div>
+                        </div>
+                    </div>
+                    <div class="timeline-info">
+                        <div class="time-title">Selected Territory Times</div>
+                        <div class="selectTime uk"></div>
+                        <div class="selectTime ukr"></div>
+                        <div class="selectTime de"></div>
+                        <div class="selectTime au"></div>
+                        <div class="selectTime hksg"></div>
+                        <div class="selectTime uae"></div>
+                    </div>
+                    <div class="current-info">
+                        <div class="time-title">Current Territory Times</div>
+                        <div class="currentTime uk"></div>
+                        <div class="currentTime ukr"></div>
+                        <div class="currentTime de"></div>
+                        <div class="currentTime au"></div>
+                        <div class="currentTime hksg"></div>
+                        <div class="currentTime uae"></div>
+                    </div>
+                    <div class="working-info">
+
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
     <div class="bottom-decal">
@@ -107,7 +182,7 @@
             <footer>© Copyright  Inskin Media LTD - All Rights Reserved</footer>
         </div> -->
     </div>
-    
+
 </body>
 
 </html>
