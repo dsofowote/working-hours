@@ -2,8 +2,9 @@ $(document).ready(function () {
     var timelineFunctions = function () {
         //Position logic
         var tLOffset = $(".timeline-overlay").offset();
+        console.log("tloffest - " + tLOffset.top + "");
         $(".working-container").css({
-            "top" : tLOffset.top + 20
+            "top": "386px"
         });
 
         //Territory position logic
@@ -72,10 +73,9 @@ $(document).ready(function () {
             });
 
             var currentLine = $(this).text();
-            var cM = currentDate.getMinutes();
-            var cMString = cM.toString();
+            var cMString = cMpx.toString();
             if (cMString.length < 2) {
-                cM = "0" + cM;
+                cMpx = "0" + cMpx;
             }
             var a = parseInt(currentHour);
 
@@ -85,13 +85,6 @@ $(document).ready(function () {
             $(".currentTime.au").text("AU - " + checkOverlap((a + 11)) + ":" + cMpx);
             $(".currentTime.hksg").text("HK/SG - " + checkOverlap((a + 8)) + ":" + cMpx);
             $(".currentTime.uae").text("UAE - " + checkOverlap((a + 4)) + ":" + cMpx);
-
-            console.log(currentHour);
-            console.log(currentMinutes);
-            console.log(tLWidth);
-            console.log(cHpx);
-            console.log(cMpx);
-            console.log(cMcv);
         };
         currentTimeLine();
 
@@ -152,13 +145,33 @@ $(document).ready(function () {
     $(window).resize(function () {
         timelineFunctions();
     });
+
+    // setInterval(function(){
+    //     timelineFunctions();
+    // }1000,);
+
+    var dstCheck = function (currentDate, timeZone) {
+        var currentDate = new Date();
+        var sliceme = currentDate.toString();
+        var slicedDate = sliceme.slice(4, 7);
+        //From 31/03/19 to 27/10/19
+        if (slicedDate == "Apr" || slicedDate == "May" || slicedDate == "Jun" || slicedDate == "Jul" || slicedDate == "Aug" || slicedDate == "Sep" || slicedDate == "Oct"){
+            console.log("daylight savings");
+        } else {
+            console.log("not daylight savings");
+        }
+    }
+
     //Top section functionality, Time and working hours
     var getTimezones = function (timeDiff) {
         var currentDate = new Date();
+        
         var currentHour = currentDate.getHours() + timeDiff;
         var currentMinutes = currentDate.getMinutes();
         var cMString = currentMinutes.toString();
         var cHString = currentHour.toString();
+
+        dstCheck(currentDate, timeDiff);
 
         if (cMString.length < 2) {
             currentMinutes = "0" + currentMinutes;
@@ -184,11 +197,9 @@ $(document).ready(function () {
         currentDate.setHours(08 + timeDiff, 30);
         var uksHour = currentDate;
         var csString = uksHour.toString();
-        console.log(csString);
         currentDate.setHours(18 + timeDiff, 00);
         var uklHour = currentDate;
         var clString = uklHour.toString();
-        console.log(csString, clString);
 
         //Omit all data except time
         var slicedStartTime = csString.slice(16, 21);
@@ -196,9 +207,41 @@ $(document).ready(function () {
         var currentTime = "Start: " + slicedStartTime + " - Finish: " + slicedEndTime + "";
         $(".territory-item").html(currentTime);
     }
+    
 
     $(".zone-item").click(function () {
         var timezone = $(this).text();
+        switch (timezone) {
+            case "UK":
+                getTimezones((0));
+                getWorking((0));
+                break;
+            case "AU":
+                getTimezones((11));
+                getWorking((-11));
+                break;
+            case "HK/SG":
+                getTimezones((8));
+                getWorking((-8));
+                break;
+            case "UAE":
+                getTimezones((4));
+                getWorking((-4));
+                break;
+            case "DE":
+                getTimezones((1));
+                getWorking((-1));
+                break;
+            case "UKR":
+                getTimezones((2));
+                getWorking((-2));
+                break;
+        }
+    });
+
+    $(".wHours").hover(function () {
+        var timezone = $(this).find(".territory-label").text();
+        $(this).find(".territory-label").addClass("hover");
         console.log(timezone);
         switch (timezone) {
             case "UK":
@@ -207,25 +250,27 @@ $(document).ready(function () {
                 break;
             case "AU":
                 getTimezones((11));
-                getWorking((11));
+                getWorking((-11));
                 break;
             case "HK/SG":
                 getTimezones((8));
-                getWorking((8));
+                getWorking((-8));
                 break;
             case "UAE":
                 getTimezones((4));
-                getWorking((4));
+                getWorking((-4));
                 break;
             case "DE":
                 getTimezones((1));
-                getWorking((1));
+                getWorking((-1));
                 break;
             case "UKR":
                 getTimezones((2));
-                getWorking((2));
+                getWorking((-2));
                 break;
         }
+    }, function () {
+        $(this).find(".territory-label").removeClass("hover");
     });
 
 });
