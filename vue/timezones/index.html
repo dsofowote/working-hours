@@ -18,6 +18,189 @@
 </head>
 
 <body>
+        <!-- <div class="main-wrapper vuepage templates">
+                <div class="top-bar">
+                    <div class="bottom-decal">
+                    </div>
+                    <div class="logo"><img src="img/logo.png" alt=""></div>
+                    <div class="title">Testing - Interface</div>
+                    <div class="title-line pre-transit-f"></div>
+                </div>
+                <div class="container top-el">
+                    <div class="col-md-12 panel no-pad pre-transit-f">
+                        <div class="panel-title">Part I</div>
+                        <div class="row">
+                            <div class="col-md-12" style="margin:0 auto">
+                                <div class="timezones time-title">Working Times (UK Time)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="container top-el" style="margin: 0 auto">
+                    <div class="col-md-5 panel no-pad pre-transit-f">
+                        <div class="panel-title">Part II</div>
+                        <div class="row">
+                            <div class="col-md-12" style="margin:0 auto">
+                                <div class="timezones time-title vuepagebutton"><a href="#">Next Link</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 panel no-pad pre-transit-f">
+                            <div class="panel-title">Part III</div>
+                            <div class="row">
+                                <div class="col-md-12" style="margin:0 auto">
+                                    <div class="timezones time-title vuepagebutton"><a href="#">Next Link</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 panel no-pad pre-transit-f">
+                            <div class="panel-title">Part IV</div>
+                            <div class="row">
+                                <div class="col-md-12" style="margin:0 auto">
+                                    <div class="timezones time-title vuepagebutton"><a href="#">Next Link</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 panel no-pad pre-transit-f">
+                                <div class="panel-title">Part V</div>
+                                <div class="row">
+                                    <div class="col-md-12" style="margin:0 auto">
+                                        <div class="timezones time-title vuepagebutton"><a href="#">Next Link</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                </div>
+            </div> -->
+    <div class="main-wrapper vuepage instance">
+        <div class="top-bar">
+            <div class="bottom-decal">
+            </div>
+            <div class="logo"><img src="img/logo.png" alt=""></div>
+            <div class="title">Testing - Instance</div>
+            <div class="title-line pre-transit-f"></div>
+        </div>
+        <div class="container top-el">
+            <div class="col-md-12 panel no-pad pre-transit-f">
+                <div class="panel-title">Part I - Instances</div>
+                <div class="row">
+                    <div class="col-md-12" style="margin:0 auto">
+                        <div class="timezones time-title timepagebutton"><a href="#">Previous Link</a></div>
+                        <div class="timezones time-title">Intro</div>
+                        
+                        <div id="vmIns" class="timezones zone-item">
+                            Freeze Obj test:
+                            <div id="appInst1">
+                                <p>{{ foo }}</p>
+                                <!-- this will no longer update `foo`! -->
+                                <button v-on:click="foo = 'baz'">Change it</button>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container top-el">
+
+            <div class="col-md-6 panel no-pad pre-transit-f">
+                <div class="panel-title">Part II.1 - Template Syntax - Interpolations</div>
+                <div class="row">
+                    <div class="col-md-12" style="margin:0 auto">
+                        <div class="timezones time-title">V-once (This Data is not 'updateable' due to the attribute)</div>
+                            <div v-once class="timezones zone-item apptemsyn">
+                                    <span>{{ message }}</span></div>
+
+                                    <div class="timezones time-title">Raw HTML</div>
+                            <div v-once class="timezones zone-item apptemsyn">
+                                    <span>{{ message }}</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 panel no-pad pre-transit-f">
+                    <div class="panel-title">Part II.2 -</div>
+                    <div class="row">
+                        <div class="col-md-12" style="margin:0 auto">
+                            <div class="timezones time-title"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 panel no-pad pre-transit-f">
+                    <div class="panel-title">Part IV</div>
+                    <div class="row">
+                        <div class="col-md-12" style="margin:0 auto">
+                            <div class="timezones time-title vuepagebutton"><a href="#">Next Link</a></div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+    <div class="main-wrapper vuepage">
+        <div class="top-bar">
+            <div class="bottom-decal">
+                <!-- <div class="footer">
+                                <footer>© Copyright  Inskin Media LTD - All Rights Reserved</footer>
+                            </div> -->
+            </div>
+            <div class="logo"><img src="img/logo.png" alt=""></div>
+            <div class="title">Testing - Basics</div>
+            <div class="title-line pre-transit-f"></div>
+        </div>
+        <div class="container top-el">
+            <div class="col-md-10 panel no-pad pre-transit-f">
+                <div class="panel-title">Part I</div>
+                <div class="row">
+                    <div class="col-md-12" style="margin:0 auto">
+                        <div class="timezones time-title timepagebutton"><a href="#">Previous Link</a></div>
+                        <div class="timezones time-title">Dynamically adjusting data</div>
+                        <div id="vuetest" class="zone-item"> {{extra_data}}</div>
+                        <div class="timezones time-title">Binding Data</div>
+                        <div id="vue2" class="zone-item">
+                            <span class="spandiv" v-bind:title="message2">
+                                Adjusting attributes using v-bind</span>
+                        </div>
+                        <div id="vue3" class="timezones time-title" v-if="seen">If Statement/Seen Tests</div>
+                        <div id="vue5" class="timezones time-title" v-on:click="updateLink">Click Function/ v-on:EVENT
+                            {{message}}</div>
+                        <div id="vue6" class="timezones time-title">
+                            <p>Using Models to bind data {{modelUpdate}}</p>
+                            <input v-model="modelUpdate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container top-el">
+            <div class="col-md-12 panel no-pad pre-transit-f">
+                <div class="panel-title">Part II</div>
+                <div class="row">
+                    <div class="col-md-12" style="margin:0 auto">
+                        <div class="timezones time-title vuepagebutton"><a href="#">Next Link</a></div>
+                        <div class="timezones time-title">Components</div>
+                        <div class="timezones zone-item">
+                            <div id="app-7">
+                                <ol>
+                                    <!--
+                                    Now we provide each todo-item with the todo object
+                                    it's representing, so that its content can be dynamic.
+                                    We also need to provide each component with a "key",
+                                    which will be explained later.
+                                  -->
+                                    <todo-item v-for="item in territoryList" v-bind:todo="item" v-bind:key="item.id">
+                                    </todo-item>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="main-wrapper timepage">
         <div class="top-bar">
             <div class="logo"><img src="img/logo.png" alt=""></div>
@@ -42,7 +225,7 @@
                         <div class="timezones current-item"></div>
                         <div class="timezones time-title">Working Times (UK Time)</div>
                         <div id="tti" class="timezones territory-item"></div>
-                        <div class="timezones time-title vuepagebutton"><a href="#">Next Link</a></div>
+                        <div class="timezones time-title timepagebutton"><a href="#">Previous Link</a></div>
                     </div>
                 </div>
 
@@ -179,44 +362,7 @@
 
         </div>
     </div>
-    <div class="main-wrapper vuepage">
-        <div class="top-bar">
-            <div class="bottom-decal">
-                <!-- <div class="footer">
-                                <footer>© Copyright  Inskin Media LTD - All Rights Reserved</footer>
-                            </div> -->
-            </div>
-            <div class="logo"><img src="img/logo.png" alt=""></div>
-            <div class="title">Testing</div>
-            <div class="title-line pre-transit-f"></div>
-        </div>
-        <div class="container top-el">
-            <div class="col-md-10 panel no-pad pre-transit-f">
-                <div class="panel-title">Time</div>
-                <div class="row">
-                    <div class="col-md-8" style="margin:0 auto">
-                        <div class="timezones time-title timepagebutton"><a href="#">Previous Link</a></div>
-                        <div class="timezones time-title">Working Times (UK Time)</div>
-                        <div id="tti" class="timezones territory-item"></div>
-                        <div class="timezones time-title">Dynamic Element</div>
-                        <div id="vuetest" class="zone-item">UKR {{extra_data}}</div>
-                        <div class="timezones time-title">Binding Data</div>
-                        <div id="vue2" class="zone-item">
-                            <span class="spandiv" v-bind:title="message2">
-                                Title with date</span>
-                        </div>
-                        <div id="vue3" class="timezones time-title" v-if="seen">Seen Tests</div>
-                        <div id="vue5" class="timezones time-title" v-on:click="updateLink">Click's {{message}}</div>
-                        <div id="vue6" class="timezones time-title">
-                            <p>{{modelUpdate}}</p>
-                            <input v-model="modelUpdate">
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="col-md-3 panel no-pad">
+    <!-- <div class="col-md-3 panel no-pad">
                         <div class="panel-title">Customise</div>
                         <div class="timezones custom-item"><input type="text"></div>
                         <div class="timezones selected-item"><input type="text"></div>

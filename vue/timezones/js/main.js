@@ -1,74 +1,167 @@
 $(document).ready(function () {
-//Page switching
-$(".vuepagebutton").click(function(){
-    $(".main-wrapper").css({
-        "top" : -874 + "px"
+    //Page switching
+    var Pagepos = 0;
+    $(".vuepagebutton").click(function () {
+        Pagepos = Pagepos - 874;
+        $(".main-wrapper").css({
+            "top": Pagepos + "px"
+        });
     });
-});
 
-$(".timepagebutton").click(function(){
-    $(".main-wrapper").css({
-        "top" : 0 + "px"
+    $(".timepagebutton").click(function () {
+        Pagepos = Pagepos + 874;
+        $(".main-wrapper").css({
+            "top": Pagepos + "px"
+        });
     });
-});
 
-//Vue testing
-setTimeout(function(){
-//Simple data binding task
-var app = new Vue({
-    el: "#vuetest",
-    data: {
-        extra_data: "Element Changes"
-    },
-    methods: {
-        updateElement: function(){
-        }
-    }
-});
+    //Vue I - Basics 
+    setTimeout(function () {
+        //Simple data binding task
+        var app = new Vue({
+            el: "#vuetest",
+            data: {
+                extra_data: "Element Changes after 3 seconds"
+            },
+            methods: {
+                updateElement: function () {}
+            }
+        });
 
-var app2 = new Vue({
-    el: "#vue2",
-    data: {
-        message2: 'You loaded this page on ' + new Date().toLocaleString()
-    }
-});
+        //vue2 - updating attributes
+        var app2 = new Vue({
+            el: "#vue2",
+            data: {
+                message2: 'You loaded this page on ' + new Date().toLocaleString()
+            }
+        });
 
-var app3 = new Vue({
-    el: "#vue3",
-    data: {
-        seen: true
-    }
-});
+        //vue 3 - if statements/Seen
+        var app3 = new Vue({
+            el: "#vue3",
+            data: {
+                seen: true
+            }
+        });
 
-setInterval(function(){
-app2.message2 = 'Updated to ' + new Date().toLocaleString()
-}, 1000);
+        setInterval(function () {
+            app2.message2 = 'Updated to ' + new Date().toLocaleString()
+        }, 1000);
 
-}, 3000);
-var g = 0;
+    }, 3000);
+    var g = 0;
 
-var app5 = new Vue ({
-    el: "#vue5",
-    data: {
-        message: "new test"
-    },
-        methods : {
-            updateLink : function(){
+    //vue 5 - event handling/Click functions
+    var app5 = new Vue({
+        el: "#vue5",
+        data: {
+            message: "Click for # "
+        },
+        methods: {
+            updateLink: function () {
                 this.message = this.message + g++
             }
         }
-})
+    })
 
-var app6 = new Vue ({
-    el: "#vue6",
-    data: {
-        modelUpdate: "Link the Input"
+    //vue 6 - Using models to bind inputs
+    var app6 = new Vue({
+        el: "#vue6",
+        data: {
+            modelUpdate: "Link the Input"
+        }
+    })
+
+    //vue 7 - components to build templates
+    Vue.component('todo-item', {
+        // The todo-item component now accepts a
+        // "prop", which is like a custom attribute.
+        // This prop is called todo.
+        props: ['todo'],
+        template: '<li>{{ todo.text }}</li>'
+    })
+
+    var app7 = new Vue({
+        el: "#app-7",
+        data: {
+            territoryList: [{
+                    id: 0,
+                    text: 'United Kingdom'
+                },
+                {
+                    id: 1,
+                    text: 'Germany'
+                },
+                {
+                    id: 2,
+                    text: 'Australia'
+                }
+            ]
+        }
+    })
+
+    //Vue II - Instance Tutorials
+     // Our data object
+     var data = {
+        a: 1
     }
-})
 
-//Vue code ends ---------------------------------------------------------------------------------------------------
+    // The object is added to a Vue instance
+    var vm = new Vue({
+        data: data
+    })
+
+    // Getting the property on the instance
+    // returns the one from the original data
+    vm.a == data.a // => true
+
+    // Setting the property on the instance
+    // also affects the original data
+    vm.a = 2
+    data.a // => 2
+
+    // ... and vice-versa
+    data.a = 3
+    vm.a // => 3
+
+    // var vmInst = new Vue({
+    //     el: '#vmIns'
+    // })
+
+    //data properties will not be reative if the property did not exist when the instance was initialised
+        //to avoid data not being reactive, declare all props when instance is created
+
+        //other instance where data will not be reactive is if the freeze method is used as below:
+        var obj = {
+            foo: 'bar'
+          }
+
+          //prevents obj data from being updated
+          Object.freeze(obj)
+
+          //demonstrating what happens when you attempt to update obj data after applying the freeze method
+          new Vue({
+            el: '#appInst1',
+            data: obj
+          });
+
+          //Template syntax
+          var vmTempsyn = new Vue ({
+            el: '.apptemsyn',
+            data: {
+                message:"This data will never change",
+            }
+          });
+          console.log(vmTempsyn.message);
+          setTimeout(function(){
+            vmTempsyn.message = "This data isnt using the once rule";
+            alert("Variable for part II has been updated but the v-once rule is blocking this")
+          },2000);
+
+    //Vue code ends ---------------------------------------------------------------------------------------------------
+
     //Initial transitions
-    var transistions = function() {
+    var transistions = function () {
         $(".pre-transit-f").addClass("transit-f");
         $(".pre-transit-p").addClass("transit-p");
 
@@ -77,7 +170,7 @@ var app6 = new Vue ({
     };
 
     transistions();
-    
+
     var timelineFunctions = function () {
         //Position logic
         var tLOffset = $(".timeline-overlay").offset();
@@ -394,6 +487,6 @@ var app6 = new Vue ({
         $(this).find(".territory-label").removeClass("hover");
     });
 
-    
+
 
 });
