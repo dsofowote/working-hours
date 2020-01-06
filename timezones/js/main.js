@@ -1,4 +1,18 @@
 $(document).ready(function () {
+
+    //Initial transitions
+    var transistions = function() {
+        $(".pre-transit-f").addClass("transit-f");
+        $(".pre-transit-p").addClass("transit-p");
+
+        $(".pre-transit-f").removeClass("pre-transit-f");
+        $(".pre-transit-p").removeClass("pre-transit-p");
+
+
+    };
+
+    transistions();
+    
     var timelineFunctions = function () {
         //Position logic
         var tLOffset = $(".timeline-overlay").offset();
@@ -10,20 +24,28 @@ $(document).ready(function () {
         //Territory position logic
         var timeblock = $(".timestamps").outerWidth();
         var workTime = timeblock * 9.5;
+        var workTimeUkr = timeblock * 11;
+        var workTimeDe = timeblock * 9;
         $(".wHours").css({
             "width": workTime
+        });
+        $(".wHours.ukr").css({
+            "width": workTimeUkr
+        });
+        $(".wHours.de").css({
+            "width": workTimeDe
         });
         $(".wHours.uk").css({
             "left": timeblock * 8.5
         });
         $(".wHours.ukr").css({
-            "left": (timeblock * 10.5)
+            "left": (timeblock * 6)
         });
         $(".wHours.de").css({
-            "left": (timeblock * 9.5)
+            "left": (timeblock * 8)
         });
         $(".wHours.au").css({
-            "left": (timeblock * 19.5)
+            "left": (timeblock * 21.5)
         });
         $(".wHours.au2").css({
             "left": (timeblock * -4.5)
@@ -35,7 +57,7 @@ $(document).ready(function () {
             "left": (timeblock * -7.5)
         });
         $(".wHours.uae").css({
-            "left": (timeblock * 13)
+            "left": (timeblock * 4.5)
         });
 
         //Set back to 00:00 when hour passes 24
@@ -100,6 +122,15 @@ $(document).ready(function () {
             });
         });
 
+        //Simple Parallax Effect
+        $(".timeline").mousemove(function (event) {
+            var xClient = event.clientX;
+            var yClient = event.clientY;
+            $(".parallax").css({
+                "left": xClient * 0.15
+            });
+        });
+
         //Control hours displayed based on user's position on timeline
         $(".stamplines").mousemove(function (event) {
             var currentLine = $(this).text();
@@ -151,21 +182,22 @@ $(document).ready(function () {
     // }1000,);
 
     var dstCheck = function (currentDate, timeZone) {
+        //Checks if we are in Daylight Savings period of the year
         var currentDate = new Date();
         var sliceme = currentDate.toString();
         var slicedDate = sliceme.slice(4, 7);
         //From 31/03/19 to 27/10/19
-        if (slicedDate == "Apr" || slicedDate == "May" || slicedDate == "Jun" || slicedDate == "Jul" || slicedDate == "Aug" || slicedDate == "Sep" || slicedDate == "Oct"){
-            console.log("daylight savings");
+        if (slicedDate == "Apr" || slicedDate == "May" || slicedDate == "Jun" || slicedDate == "Jul" || slicedDate == "Aug" || slicedDate == "Sep" || slicedDate == "Oct") {
+            console.log("daylight savings", slicedDate);
+            var divGen = $("")
         } else {
-            console.log("not daylight savings");
+            console.log("not daylight savings", slicedDate);
         }
     }
 
     //Top section functionality, Time and working hours
     var getTimezones = function (timeDiff) {
         var currentDate = new Date();
-        
         var currentHour = currentDate.getHours() + timeDiff;
         var currentMinutes = currentDate.getMinutes();
         var cMString = currentMinutes.toString();
@@ -193,21 +225,45 @@ $(document).ready(function () {
     }
 
     var getWorking = function (timeDiff) {
+        $(".timezones").addClass("clear");
         var currentDate = new Date();
-        currentDate.setHours(08 + timeDiff, 30);
+        var startMins = 30;
+        var endMins = 00;
+        currentDate.setHours(08 + timeDiff, startMins);
         var uksHour = currentDate;
         var csString = uksHour.toString();
-        currentDate.setHours(18 + timeDiff, 00);
+        currentDate.setHours(18 + timeDiff, endMins);
         var uklHour = currentDate;
         var clString = uklHour.toString();
+
+        if (timeDiff == -2) {
+            var startMins = 00;
+            var endMins = 00;
+            currentDate.setHours(08 + timeDiff, startMins);
+            var uksHour = currentDate;
+            var csString = uksHour.toString();
+            currentDate.setHours(19 + timeDiff, endMins);
+            var uklHour = currentDate;
+            var clString = uklHour.toString();
+        } else if (timeDiff == -1) {
+            var startMins = 00;
+            var endMins = 00;
+            currentDate.setHours(09 + timeDiff, startMins);
+            var uksHour = currentDate;
+            var csString = uksHour.toString();
+            currentDate.setHours(18 + timeDiff, endMins);
+            var uklHour = currentDate;
+            var clString = uklHour.toString();
+        }
 
         //Omit all data except time
         var slicedStartTime = csString.slice(16, 21);
         var slicedEndTime = clString.slice(16, 21);
         var currentTime = "Start: " + slicedStartTime + " - Finish: " + slicedEndTime + "";
         $(".territory-item").html(currentTime);
+        $(".timezones").delay(500).removeClass("clear");
     }
-    
+
 
     $(".zone-item").click(function () {
         var timezone = $(this).text();
